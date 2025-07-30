@@ -1,0 +1,79 @@
+---
+title: "Tabelas convertidas"
+output: github_document
+---
+
+### Tabela 1
+
+| Mesorregião | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Campo das Vertentes | 6 | 7 | 8 | 4 | 8 | 5 | 10 | 13 | 5 | 5 | 10 | 25 | 106 |
+| Central Mineira | 9 | 20 | 12 | 14 | 15 | 21 | 17 | 30 | 13 | 21 | 18 | 24 | 214 |
+| Jequitinhonha | 9 | 11 | 8 | 18 | 16 | 9 | 11 | 16 | 10 | 8 | 14 | 12 | 142 |
+| Metropolitana de Belo Horizonte | 264 | 255 | 295 | 223 | 247 | 226 | 279 | 334 | 351 | 214 | 384 | 425 | 3497 |
+| Noroeste de Minas | 5 | 14 | 9 | 12 | 13 | 8 | 6 | 13 | 10 | 4 | 9 | 12 | 115 |
+| Norte de Minas | 13 | 6 | 7 | 11 | 12 | 13 | 16 | 25 | 11 | 16 | 27 | 23 | 180 |
+| Oeste de Minas | 20 | 26 | 24 | 26 | 22 | 29 | 45 | 36 | 25 | 66 | 38 | 36 | 393 |
+| Sul / Sudoeste de Minas | 66 | 102 | 105 | 98 | 150 | 137 | 136 | 138 | 100 | 62 | 122 | 147 | 1363 |
+| Triângulo Mineiro / Alto Paranaíba | 62 | 72 | 65 | 65 | 76 | 64 | 69 | 74 | 65 | 49 | 89 | 99 | 849 |
+| Vale do Mucuri | 4 | 7 | 9 | 6 | 6 | 7 | 37 | 24 | 4 | 3 | 13 | 16 | 136 |
+| Vale do Rio Doce | 76 | 55 | 82 | 46 | 63 | 61 | 56 | 62 | 93 | 39 | 81 | 58 | 772 |
+| Zona da Mata | 104 | 72 | 97 | 69 | 84 | 99 | 146 | 121 | 277 | 99 | 127 | 157 | 1452 |
+| Total | 638 | 647 | 721 | 592 | 712 | 679 | 828 | 886 | 964 | 586 | 932 | 1034 | 9219 |
+
+
+### Tabela 2
+
+| Mesorregião | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | Med |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Campo das Vertentes | 74.3 | 71.5 | 53.5 | 89.8 | 79.6 | 100.2 | 85.5 | 80.0 | 70.0 | 80.4 | 78.9 | 87.0 | 80.0 |
+| Central Mineira | 42.1 | 75.0 | 26.0 | 65.1 | 71.6 | 68.2 | 51.5 | 39.7 | 84.2 | 41.2 | 23.2 | 32.3 | 51.3 |
+| Jequitinhonha | 27.9 | 35.4 | 27.2 | 28.8 | 28.2 | 30.4 | 52.2 | 38.9 | 57.8 | 36.5 | 18.8 | 19.5 | 33.4 |
+| Metropolitana de Belo Horizonte | 56.5 | 75.3 | 57.5 | 84.1 | 65.0 | 60.6 | 110.8 | 69.6 | 100.5 | 51.7 | 51.8 | 67.4 | 75.7 |
+| Noroeste de Minas | 28.6 | 76.2 | 44.9 | 51.0 | 37.2 | 46.6 | 67.3 | 56.2 | 70.7 | 43.2 | 30.8 | 42.7 | 49.6 |
+| Norte de Minas | 9.7 | 36.7 | 24.8 | 16.6 | 8.9 | 18.6 | 34.9 | 38.0 | 71.8 | 28.0 | 6.8 | 6.2 | 25.7 |
+| Oeste de Minas | 58.1 | 85.1 | 49.7 | 86.2 | 77.9 | 86.1 | 81.2 | 93.9 | 63.8 | 42.9 | 48.9 | 36.2 | 67.7 |
+| Sul / Sudoeste de Minas | 77.9 | 102.1 | 49.4 | 81.5 | 118.9 | 83.8 | 86.4 | 95.6 | 48.9 | 40.9 | 78.8 | 62.6 | 72.3 |
+| Triângulo Mineiro / Alto Paranaíba | 83.6 | 109.0 | 75.9 | 92.7 | 82.2 | 98.3 | 90.3 | 93.6 | 63.1 | 81.6 | 71.4 | 60.6 | 83.6 |
+| Vale do Mucuri | 44.7 | 52.1 | 57.5 | 36.2 | 23.4 | 40.8 | 42.4 | 39.5 | 76.6 | 105.6 | 36.6 | 18.4 | 47.8 |
+| Vale do Rio Doce | 38.3 | 54.0 | 45.3 | 50.0 | 50.2 | 51.1 | 63.9 | 59.2 | 102.6 | 58.6 | 36.0 | 44.2 | 54.7 |
+| Zona da Mata | 81.7 | 87.2 | 61.2 | 71.1 | 71.2 | 71.0 | 95.2 | 85.8 | 81.7 | 59.6 | 95.6 | 70.3 | 72.1 |
+| Med | 51.4 | 71.5 | 47.5 | 61.9 | 58.5 | 63.3 | 72.3 | 65.7 | 73.8 | 56.0 | 46.6 | 45.6 | nan |
+
+
+### Tabela 3
+
+| Mesorregião | Incidência acumulada (casos/100 mil hab.) |
+| --- | --- |
+| Campo das Vertentes | 18.6 |
+| Central Mineira | 51.8 |
+| Jequitinhonha | 21.5 |
+| Metropolitana de Belo Horizonte | 52.0 |
+| Noroeste de Minas | 27.5 |
+| Norte de Minas | 10.9 |
+| Oeste de Minas | 36.5 |
+| Sul / Sudoeste de Minas | 52.4 |
+| Triângulo Mineiro / Alto Paranaíba | 34.6 |
+| Vale do Mucuri | 36.9 |
+| Vale do Rio Doce | 49.9 |
+| Zona da Mata | 64.7 |
+| Geral (MG) | 44.5 |
+
+
+### Tabela 4
+
+| Mesorregião | Tau (τ) | p-valor |
+| --- | --- | --- |
+| Campo das Vertentes | 0.0 | 0.058 |
+| Central Mineira | 0.1 | 0.319 |
+| Jequitinhonha | 0.0 | 0.441 |
+| Metropolitana de Belo Horizonte | 0.4 | <0,001 |
+| Noroeste de Minas | -0.1 | 0.239 |
+| Norte de Minas | 0.1 | 0.03 |
+| Oeste de Minas | 0.1 | 0.099 |
+| Sul / Sudoeste de Minas | 0.3 | <0,001 |
+| Triângulo Mineiro / Alto Paranaíba | 0.2 | 0.004 |
+| Vale do Mucuri | -0.1 | 0.233 |
+| Vale do Rio Doce | 0.2 | <0,001 |
+| Zona da Mata | 0.3 | <0,001 |
+
