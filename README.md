@@ -19,9 +19,9 @@ Os dados utilizados neste estudo são de domínio público e foram obtidos das s
 
 O repositório está organizado da seguinte forma:
 
-  * **/dados**: Contém os dados brutos e processados utilizados na análise.
-  * **"LeptoClima-MG_2012-2023/Script"**: Contém os scripts em R para o processamento dos dados, a análise estatística e a geração das visualizações.
-  * **/resultados**: Contém as saídas da análise, como tabelas, gráficos e mapas gerados pelos scripts.
+  * **/Dados**: Contém os dados brutos e processados utilizados na análise.
+  * **/Script**: Contém os scripts em R para o processamento dos dados, a análise estatística e a geração das visualizações.
+  * **/Resultados**: Contém as saídas da análise, como tabelas, gráficos e mapas gerados pelos scripts.
 
 
 ## Contato
