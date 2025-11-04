@@ -470,10 +470,9 @@ F: ████████████ (12)
                 return;
             }
             
-            // Calcular data de referência (14 dias antes)
+            // Calcular data de referência (14 dias antes) - usando milissegundos para evitar problemas com limites de mês
             var dataNotif = new Date(data);
-            var dataRef = new Date(dataNotif);
-            dataRef.setDate(dataRef.getDate() - 14);
+            var dataRef = new Date(dataNotif.getTime() - (14 * 24 * 60 * 60 * 1000));
             
             // Atualizar status
             document.getElementById('status').className = 'alert alert-success';

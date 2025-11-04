@@ -244,12 +244,12 @@ server <- function(input, output, session) {
   # Observador do botão Calcular
   observeEvent(input$btn_calcular, {
     
-    # Validação dos campos
-    req(input$id_paciente, input$data_notificacao, input$mesorregiao,
-        input$idade, input$sexo, input$municipio)
-    
-    if(input$id_paciente == "" || input$mesorregiao == "" || 
-       input$sexo == "" || input$municipio == "") {
+    # Validação dos campos - verifica se estão preenchidos
+    if(is.null(input$id_paciente) || input$id_paciente == "" ||
+       is.null(input$mesorregiao) || input$mesorregiao == "" || 
+       is.null(input$sexo) || input$sexo == "" || 
+       is.null(input$municipio) || input$municipio == "" ||
+       is.null(input$data_notificacao) || is.null(input$idade)) {
       showNotification("Por favor, preencha todos os campos!", 
                       type = "error", duration = 5)
       return()
@@ -335,12 +335,19 @@ server <- function(input, output, session) {
   output$tabela_calculos <- renderTable({
     req(dados_paciente$salvos)
     
+    # Usar nomes de meses em português de forma consistente
+    mes_num <- format(dados_paciente$data_ref, "%m")
+    meses_pt <- c("01" = "Janeiro", "02" = "Fevereiro", "03" = "Março", 
+                  "04" = "Abril", "05" = "Maio", "06" = "Junho",
+                  "07" = "Julho", "08" = "Agosto", "09" = "Setembro",
+                  "10" = "Outubro", "11" = "Novembro", "12" = "Dezembro")
+    
     data.frame(
       Cálculo = c("Data de Referência", "Período de Incubação", "Ano", "Mês"),
       Resultado = c(as.character(dados_paciente$data_ref),
                    "14 dias",
                    format(dados_paciente$data_ref, "%Y"),
-                   format(dados_paciente$data_ref, "%B"))
+                   meses_pt[mes_num])
     )
   })
   
