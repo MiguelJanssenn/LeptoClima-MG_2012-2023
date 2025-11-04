@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeptoClima MG - Demonstração da Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #428bca;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background-color: #ddd;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            border: 1px solid #ccc;
+        }
+        .tab.active {
+            background-color: white;
+            border-bottom: none;
+        }
+        .tab-content {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 0 5px 5px 5px;
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn-primary {
+            background-color: #428bca;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .btn-primary:hover {
+            background-color: #3276b1;
+        }
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .alert-info {
+            background-color: #d9edf7;
+            border: 1px solid #bce8f1;
+            color: #31708f;
+        }
+        .alert-success {
+            background-color: #dff0d8;
+            border: 1px solid #d6e9c6;
+            color: #3c763d;
+        }
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .summary {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #428bca;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #555;
+        }
+        .icon {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+        .demo-note {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏥 Análise Leptospirose - MG (2012-2023)</h1>
+        <p>Sistema de Entrada e Análise de Dados de Pacientes</p>
+    </div>
+
+    <div class="demo-note">
+        <strong>📋 Nota de Demonstração:</strong> Esta é uma página HTML estática para demonstração visual da interface do aplicativo Shiny.
+        O aplicativo real (<code>app.R</code>) possui funcionalidade completa com persistência de dados, cálculos automáticos e gráficos interativos.
+    </div>
+
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('dados')">Dados do Paciente</div>
+        <div class="tab" onclick="showTab('analise')">Análise de Dados</div>
+        <div class="tab" onclick="showTab('visualizacoes')">Visualizações</div>
+        <div class="tab" onclick="showTab('sobre')">Sobre</div>
+    </div>
+
+    <!-- Aba 1: Dados do Paciente -->
+    <div id="dados" class="tab-content active">
+        <h2>Entrada de Dados do Paciente</h2>
+        
+        <div class="two-column">
+            <div class="card">
+                <h3>Informações do Paciente</h3>
+                
+                <div class="form-group">
+                    <label for="id_paciente">ID do Paciente:</label>
+                    <input type="text" id="id_paciente" placeholder="Ex: PAC001">
+                </div>
+                
+                <div class="form-group">
+                    <label for="data_notificacao">Data de Notificação:</label>
+                    <input type="date" id="data_notificacao">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mesorregiao">Mesorregião:</label>
+                    <select id="mesorregiao">
+                        <option value="">Selecione...</option>
+                        <option value="CV">Campo das Vertentes</option>
+                        <option value="CM">Central Mineira</option>
+                        <option value="Jeq">Jequitinhonha</option>
+                        <option value="MBH">Metropolitana de Belo Horizonte</option>
+                        <option value="NoMG">Noroeste de Minas</option>
+                        <option value="NMG">Norte de Minas</option>
+                        <option value="OMG">Oeste de Minas</option>
+                        <option value="SSeMG">Sul/Sudoeste de Minas</option>
+                        <option value="TrMG">Triângulo Mineiro</option>
+                        <option value="VM">Vale do Mucuri</option>
+                        <option value="VRD">Vale do Rio Doce</option>
+                        <option value="ZM">Zona da Mata</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="idade">Idade:</label>
+                    <input type="number" id="idade" min="0" max="120" placeholder="Em anos">
+                </div>
+                
+                <div class="form-group">
+                    <label for="sexo">Sexo:</label>
+                    <select id="sexo">
+                        <option value="">Selecione...</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="municipio">Município de Residência:</label>
+                    <input type="text" id="municipio" placeholder="Ex: Belo Horizonte">
+                </div>
+                
+                <button class="btn-primary" onclick="salvarDados()">
+                    🧮 Calcular e Salvar Dados
+                </button>
+                
+                <p style="margin-top: 15px; color: #666; font-size: 14px;">
+                    Clique em 'Calcular e Salvar Dados' para preservar as informações antes de navegar para outras abas.
+                </p>
+            </div>
+            
+            <div class="card">
+                <h3>Status dos Dados</h3>
+                
+                <div id="status" class="alert alert-info">
+                    <span class="icon">ℹ️</span> Preencha os campos e clique em 'Calcular e Salvar Dados'
+                </div>
+                
+                <h4>Resumo dos Dados Inseridos:</h4>
+                <div id="resumo" class="summary">Nenhum dado salvo ainda.</div>
+                
+                <h4 style="margin-top: 20px;">Data de Referência (Data de Notificação - 14 dias):</h4>
+                <div id="data_ref" class="summary">Nenhuma data calculada ainda.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aba 2: Análise de Dados -->
+    <div id="analise" class="tab-content">
+        <h2>Análise dos Dados Salvos</h2>
+        
+        <div class="alert alert-success">
+            <span class="icon">✅</span> Dados carregados com sucesso! Este é um exemplo de como os dados apareceriam após serem salvos.
+        </div>
+        
+        <div class="two-column">
+            <div class="card">
+                <h3>Dados do Paciente Salvos</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Campo</td>
+                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Valor</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">ID</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">PAC001</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Data Notificação</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">2023-01-15</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Mesorregião</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">MBH</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Idade</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">35 anos</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Sexo</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">M</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Município</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Belo Horizonte</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="card">
+                <h3>Informações Calculadas</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Cálculo</td>
+                        <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Resultado</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Data de Referência</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">2023-01-01</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Período de Incubação</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">14 dias</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Ano</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">2023</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Mês</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Janeiro</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <h3>Histórico de Pacientes</h3>
+            <p style="color: #666;">Exemplo de histórico com múltiplos pacientes cadastrados:</p>
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                <thead>
+                    <tr style="background-color: #f0f0f0;">
+                        <th style="padding: 10px; border: 1px solid #ddd;">ID</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Data Notificação</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Data Referência</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Mesorregião</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Idade</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Sexo</th>
+                        <th style="padding: 10px; border: 1px solid #ddd;">Município</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">PAC001</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">2023-01-15</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">2023-01-01</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">MBH</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">35</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">M</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Belo Horizonte</td>
+                    </tr>
+                    <tr style="background-color: #f9f9f9;">
+                        <td style="padding: 8px; border: 1px solid #ddd;">PAC002</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">2023-02-20</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">2023-02-06</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">ZM</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">42</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">F</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Juiz de Fora</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">PAC003</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">2023-03-10</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">2023-02-24</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">TrMG</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">28</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">M</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Uberlândia</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Aba 3: Visualizações -->
+    <div id="visualizacoes" class="tab-content">
+        <h2>Visualizações e Gráficos</h2>
+        
+        <div class="alert alert-info">
+            <span class="icon">📊</span> No aplicativo Shiny real, estes gráficos são gerados dinamicamente com ggplot2 baseados nos dados salvos.
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <h3>Distribuição por Mesorregião</h3>
+            <div class="card">
+                <p style="color: #666;">Gráfico de barras mostrando número de casos por mesorregião</p>
+                <pre style="background-color: #f0f0f0; padding: 20px; border-radius: 5px;">
+MBH    ████████████████████████ (8)
+ZM     ████████████████ (5)
+VRD    ███████████████████ (6)
+TrMG   ██████████ (3)
+NMG    ██████████ (3)
+CV     ████████ (2)
+                </pre>
+            </div>
+        </div>
+        
+        <div class="two-column" style="margin-top: 20px;">
+            <div>
+                <h3>Distribuição por Sexo</h3>
+                <div class="card">
+                    <p style="color: #666;">Gráfico de barras por sexo</p>
+                    <pre style="background-color: #f0f0f0; padding: 20px; border-radius: 5px;">
+M: ███████████████ (15)
+F: ████████████ (12)
+                    </pre>
+                </div>
+            </div>
+            
+            <div>
+                <h3>Distribuição por Faixa Etária</h3>
+                <div class="card">
+                    <p style="color: #666;">Gráfico por faixa etária</p>
+                    <pre style="background-color: #f0f0f0; padding: 20px; border-radius: 5px;">
+0-17:  ███ (3)
+18-29: ████████ (8)
+30-44: ██████████ (10)
+45-59: ██████ (6)
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aba 4: Sobre -->
+    <div id="sobre" class="tab-content">
+        <h2>Sobre o Sistema</h2>
+        
+        <h3>Análise da Correlação entre Precipitação e Incidência de Leptospirose em Minas Gerais (2012-2023)</h3>
+        
+        <p>Este aplicativo permite a entrada, armazenamento e análise de dados de pacientes com leptospirose no estado de Minas Gerais.</p>
+        
+        <div class="card">
+            <h4>📋 Funcionalidades:</h4>
+            <ul>
+                <li>Entrada de dados do paciente com persistência entre abas</li>
+                <li>Cálculo automático da data de referência (período de incubação de 14 dias)</li>
+                <li>Visualização e análise dos dados salvos</li>
+                <li>Histórico completo de pacientes cadastrados</li>
+                <li>Gráficos de distribuição por mesorregião, sexo e idade</li>
+            </ul>
+        </div>
+        
+        <div class="card" style="margin-top: 20px;">
+            <h4>📖 Como Usar:</h4>
+            <ol>
+                <li>Acesse a aba 'Dados do Paciente'</li>
+                <li>Preencha todos os campos do formulário</li>
+                <li>Clique no botão 'Calcular e Salvar Dados'</li>
+                <li>Os dados serão preservados ao navegar entre as abas</li>
+                <li>Visualize as análises nas abas 'Análise de Dados' e 'Visualizações'</li>
+            </ol>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background-color: #f0f0f0; border-radius: 5px;">
+            <h4>📚 Informações do Projeto:</h4>
+            <p><strong>Estudo:</strong> Correlação entre precipitação pluviométrica e incidência de leptospirose nas mesorregiões de Minas Gerais, 2012-2023</p>
+            <p><strong>Autor:</strong> Miguel Antonio Janssen - d202120265@uftm.edu.br</p>
+            <p><strong>Orientadora:</strong> Profa. Dra. Ana Paula Fernandes - anapaula.fernandes@uftm.edu.br</p>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Esconder todos os conteúdos
+            var contents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            
+            // Remover active de todas as tabs
+            var tabs = document.getElementsByClassName('tab');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            
+            // Mostrar conteúdo selecionado
+            document.getElementById(tabName).classList.add('active');
+            
+            // Adicionar active na tab clicada
+            event.target.classList.add('active');
+        }
+        
+        function salvarDados() {
+            var id = document.getElementById('id_paciente').value;
+            var data = document.getElementById('data_notificacao').value;
+            var mesorregiao = document.getElementById('mesorregiao').value;
+            var idade = document.getElementById('idade').value;
+            var sexo = document.getElementById('sexo').value;
+            var municipio = document.getElementById('municipio').value;
+            
+            if (!id || !data || !mesorregiao || !idade || !sexo || !municipio) {
+                alert('Por favor, preencha todos os campos!');
+                return;
+            }
+            
+            // Calcular data de referência (14 dias antes)
+            var dataNotif = new Date(data);
+            var dataRef = new Date(dataNotif);
+            dataRef.setDate(dataRef.getDate() - 14);
+            
+            // Atualizar status
+            document.getElementById('status').className = 'alert alert-success';
+            document.getElementById('status').innerHTML = '<span class="icon">✅</span> Dados salvos com sucesso! Você pode navegar entre as abas.';
+            
+            // Atualizar resumo
+            document.getElementById('resumo').textContent = 
+                'ID do Paciente: ' + id + '\n' +
+                'Data de Notificação: ' + data + '\n' +
+                'Mesorregião: ' + mesorregiao + '\n' +
+                'Idade: ' + idade + ' anos\n' +
+                'Sexo: ' + sexo + '\n' +
+                'Município: ' + municipio;
+            
+            // Atualizar data de referência
+            document.getElementById('data_ref').textContent = 
+                'Data de Referência: ' + dataRef.toISOString().split('T')[0] + '\n' +
+                '(Data de Notificação - 14 dias para período de incubação)';
+            
+            alert('✅ Dados salvos com sucesso!\n\nVocê pode navegar livremente entre as abas. Os dados permanecerão salvos.');
+        }
+    </script>
+</body>
+</html>
